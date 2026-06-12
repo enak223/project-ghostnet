@@ -569,20 +569,20 @@ Your tasks:
 
 | Phase | Feature | Status |
 |-------|---------|--------|
-| v0.1 | Zeek install + conn.log generation | 🔲 Planned |
+| v0.1 | Zeek install + conn.log generation | ✅ Complete |
 | v0.1 | Suricata install + ET Open rules | 🔲 Planned |
-| v0.2 | Baseline builder (SQLite) | 🔲 Planned |
-| v0.2 | Anomaly detector — threshold scoring | 🔲 Planned |
-| v0.3 | Wazuh Zeek + Suricata log ingestion | 🔲 Planned |
-| v0.3 | Custom Wazuh rules deployment | 🔲 Planned |
-| v0.4 | n8n hourly anomaly check workflow | 🔲 Planned |
-| v0.4 | AI Anomaly Analyst Agent (Claude) | 🔲 Planned |
+| v0.2 | Baseline builder (SQLite) | ✅ Complete |
+| v0.2 | Anomaly detector — threshold scoring | ✅ Complete |
+| v0.3 | Wazuh Zeek + Suricata log ingestion | ✅ Complete |
+| v0.3 | Custom Wazuh rules deployment | ✅ Complete |
+| v0.4 | n8n hourly anomaly check workflow | ✅ Complete |
+| v0.4 | AI Anomaly Analyst Agent (Claude) | ✅ Complete |
 | v0.5 | MITRE ATT&CK auto-mapping | 🔲 Planned |
-| v0.5 | Slack + email alert delivery | 🔲 Planned |
+| v0.5 | Slack + email alert delivery | ✅ Complete |
 | v1.0 | Wazuh dashboard custom views | 🔲 Future |
 | v1.0 | Week-over-week baseline drift reporting | 🔲 Future |
-| v1.1 | Kali-generated attack simulation test suite | 🔲 Future |
-| v1.2 | GhostNet + SleepWell unified risk dashboard | 🔲 Future |
+| v1.1 | Kali-generated attack simulation test suite | ✅ Complete |
+| v1.2 | GhostNet + NullByte unified risk dashboard | 🔲 Future |
 | v1.3 | Encrypted baseline snapshots for forensics | 🔲 Future |
 
 ---
