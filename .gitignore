@@ -1,0 +1,6 @@
+*.db
+*.json
+cron.log
+anomalies/
+__pycache__/
+.env
