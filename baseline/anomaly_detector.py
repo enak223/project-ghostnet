@@ -20,8 +20,11 @@ logging.basicConfig(
 log = logging.getLogger("ghostnet.anomaly_detector")
 
 WAZUH_API_BASE  = "https://192.168.248.20:55000"
-WAZUH_USER      = "wazuh"
-WAZUH_PASS      = "wazuh"
+WAZUH_USER      = "wazuh-wui"
+WAZUH_PASS      = "MyS3cr37P450r.*-"
+INDEXER_BASE    = "https://192.168.248.20:9200"
+INDEXER_USER    = "admin"
+INDEXER_PASS    = "SecretPassword"
 VERIFY_SSL      = False
 POLL_INTERVAL   = 30
 HIGH_SEV_LEVEL  = 7
@@ -141,13 +144,21 @@ class WazuhClient:
         return self.token
 
     def get_alerts(self, min_level=7, limit=50):
-        headers = {"Authorization": f"Bearer {self._get_token()}"}
-        r = requests.get(f"{WAZUH_API_BASE}/alerts",
-                         headers=headers,
-                         params={"limit": limit, "sort": "-timestamp", "q": f"rule.level>={min_level}"},
-                         verify=VERIFY_SSL, timeout=15)
+        query = {
+            "size": limit,
+            "sort": [{"timestamp": {"order": "desc"}}],
+            "query": {"range": {"rule.level": {"gte": min_level}}}
+        }
+        r = requests.post(
+            f"{INDEXER_BASE}/wazuh-alerts-*/_search",
+            auth=(INDEXER_USER, INDEXER_PASS),
+            json=query,
+            verify=VERIFY_SSL,
+            timeout=15
+        )
         r.raise_for_status()
-        return r.json().get("data", {}).get("affected_items", [])
+        hits = r.json().get("hits", {}).get("hits", [])
+        return [h["_source"] for h in hits]
 
 def parse_alert(raw):
     rule  = raw.get("rule", {})
