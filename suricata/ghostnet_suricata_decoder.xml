@@ -1,0 +1,16 @@
+<!-- GhostNet — Wazuh Custom Decoder for Suricata EVE JSON
+     Deploy to: /var/ossec/etc/decoders/ghostnet_suricata_decoder.xml
+     (inside wazuh-manager container)
+-->
+<decoder name="ghostnet-suricata-eve">
+  <prematch>{"event_type":</prematch>
+  <plugin_decoder>JSON_Decoder</plugin_decoder>
+</decoder>
+
+<decoder name="ghostnet-suricata-alert">
+  <parent>ghostnet-suricata-eve</parent>
+  <use_own_name>yes</use_own_name>
+  <prematch>"event_type":"alert"</prematch>
+  <regex>"alert":{"action":"(\w+)","gid":\d+,"signature_id":(\d+),"rev":\d+,"signature":"([^"]+)","category":"([^"]*)"</regex>
+  <order>status,id,extra_data,protocol</order>
+</decoder>

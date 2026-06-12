@@ -1,0 +1,85 @@
+<!-- GhostNet — Wazuh Custom Rules: Suricata ET Open
+     Deploy to: /var/ossec/etc/rules/ghostnet_suricata_rules.xml
+     (inside wazuh-manager container)
+-->
+<group name="suricata,ids,ghostnet">
+
+  <rule id="100200" level="3">
+    <decoded_as>json</decoded_as>
+    <field name="event_type">^alert$</field>
+    <description>Suricata IDS alert: $(alert.signature)</description>
+    <group>ids,suricata</group>
+  </rule>
+
+  <rule id="100201" level="12">
+    <if_sid>100200</if_sid>
+    <field name="alert.severity">^1$</field>
+    <description>Suricata CRITICAL [P1]: $(alert.signature) | Category: $(alert.category)</description>
+    <group>ids,suricata,high_severity,ghostnet_alert</group>
+    <mitre><id>T1190</id></mitre>
+  </rule>
+
+  <rule id="100202" level="9">
+    <if_sid>100200</if_sid>
+    <field name="alert.severity">^2$</field>
+    <description>Suricata HIGH [P2]: $(alert.signature) | Category: $(alert.category)</description>
+    <group>ids,suricata,high_severity,ghostnet_alert</group>
+    <mitre><id>T1071</id></mitre>
+  </rule>
+
+  <rule id="100203" level="6">
+    <if_sid>100200</if_sid>
+    <field name="alert.severity">^3$</field>
+    <description>Suricata MEDIUM [P3]: $(alert.signature) | Category: $(alert.category)</description>
+    <group>ids,suricata,medium_severity,ghostnet_alert</group>
+  </rule>
+
+  <rule id="100210" level="12">
+    <if_sid>100200</if_sid>
+    <field name="alert.category">Exploit Kit</field>
+    <description>Suricata: Exploit Kit activity — $(alert.signature)</description>
+    <group>ids,exploit_kit,ghostnet_alert</group>
+    <mitre><id>T1203</id></mitre>
+  </rule>
+
+  <rule id="100211" level="12">
+    <if_sid>100200</if_sid>
+    <field name="alert.category">Malware Command and Control Activity</field>
+    <description>Suricata: C2 communication detected — $(alert.signature)</description>
+    <group>ids,c2,ghostnet_alert</group>
+    <mitre><id>T1071.001</id></mitre>
+  </rule>
+
+  <rule id="100212" level="10">
+    <if_sid>100200</if_sid>
+    <field name="alert.category">Attempted Administrator Privilege Gain</field>
+    <description>Suricata: Privilege escalation attempt — $(alert.signature)</description>
+    <group>ids,privesc,ghostnet_alert</group>
+    <mitre><id>T1068</id></mitre>
+  </rule>
+
+  <rule id="100213" level="8">
+    <if_sid>100200</if_sid>
+    <field name="alert.category">Attempted Information Leak</field>
+    <description>Suricata: Data exfiltration attempt — $(alert.signature)</description>
+    <group>ids,exfil,ghostnet_alert</group>
+    <mitre><id>T1041</id></mitre>
+  </rule>
+
+  <rule id="100214" level="7">
+    <if_sid>100200</if_sid>
+    <field name="alert.category">Network Scan</field>
+    <description>Suricata: Network scan from $(src_ip) — $(alert.signature)</description>
+    <group>ids,scan,ghostnet_alert</group>
+    <mitre><id>T1046</id></mitre>
+  </rule>
+
+  <rule id="100215" level="10">
+    <if_sid>100200</if_sid>
+    <field name="alert.category">A Network Trojan was detected</field>
+    <description>Suricata: Trojan activity — $(alert.signature)</description>
+    <group>ids,trojan,ghostnet_alert</group>
+    <mitre><id>T1055</id></mitre>
+  </rule>
+
+</group>

@@ -1,0 +1,18 @@
+<!-- GhostNet — Wazuh ossec.conf snippet for Suricata EVE JSON
+     
+     STEP 1: Add this <localfile> block inside <ossec_config> in ossec.conf
+             Location: docker exec -it wazuh-manager bash
+                       then: nano /var/ossec/etc/ossec.conf
+
+     STEP 2: Add volume mount to docker-compose.yml under wazuh-manager:
+             volumes:
+               - /var/log/suricata:/var/log/suricata:ro
+
+     STEP 3: docker compose restart wazuh-manager
+-->
+
+<localfile>
+  <log_format>json</log_format>
+  <location>/var/log/suricata/eve.json</location>
+  <label key="source">suricata</label>
+</localfile>
