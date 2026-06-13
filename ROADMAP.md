@@ -32,6 +32,6 @@
 - [x] NullByte SSH brute force fix (SSH enabled on ubuntu-web, hydra triggers ET SSH invalid banner alerts) (enable SSH on ubuntu-web or switch target)
 
 ## Phase 5 — Threat Intel Integration 📋 PLANNED
-- [ ] AbuseIPDB / OTX enrichment on source IPs
-- [ ] IOC feed ingest into Suricata custom rules
+- [x] OTX threat intel feed — 36 pulses, 496 Suricata rules auto-generated
+- [x] IOC feed deployed to Suricata (SID 9900000-9900495, 51251 total signatures)
 - [ ] Automated false positive suppression tuning
