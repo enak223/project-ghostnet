@@ -28,7 +28,7 @@
 ## Phase 4 — Dashboard + Reporting 🔄 NEXT
 - [x] ATT- [ ] ATT&CK Navigator heatmapCK Navigator heatmap generation from anomaly_detector mitre_summary
 - [x] n8n workflow: Wazuh alert → Claude triage → Slack/email notification
-- [ ] Executive PDF report generator from cycle JSON output
+- [x] Executive PDF report generator from cycle JSON output
 - [ ] NullByte SSH brute force fix (enable SSH on ubuntu-web or switch target)
 
 ## Phase 5 — Threat Intel Integration 📋 PLANNED
