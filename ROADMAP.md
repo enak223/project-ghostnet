@@ -29,7 +29,7 @@
 - [x] ATT- [ ] ATT&CK Navigator heatmapCK Navigator heatmap generation from anomaly_detector mitre_summary
 - [x] n8n workflow: Wazuh alert → Claude triage → Slack/email notification
 - [x] Executive PDF report generator from cycle JSON output
-- [ ] NullByte SSH brute force fix (enable SSH on ubuntu-web or switch target)
+- [x] NullByte SSH brute force fix (SSH enabled on ubuntu-web, hydra triggers ET SSH invalid banner alerts) (enable SSH on ubuntu-web or switch target)
 
 ## Phase 5 — Threat Intel Integration 📋 PLANNED
 - [ ] AbuseIPDB / OTX enrichment on source IPs
