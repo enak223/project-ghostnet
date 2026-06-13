@@ -1,0 +1,127 @@
+{
+  "name": "GhostNet Detection Coverage",
+  "versions": {
+    "attack": "14",
+    "navigator": "4.9",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Auto-generated from GhostNet anomaly_detector MITRE mappings",
+  "filters": {
+    "platforms": [
+      "Windows",
+      "Linux",
+      "Network"
+    ]
+  },
+  "sorting": 3,
+  "layout": {
+    "layout": "side",
+    "aggregateFunction": "max",
+    "showID": true,
+    "showName": true
+  },
+  "hideDisabled": false,
+  "techniques": [
+    {
+      "techniqueID": "T1595.003",
+      "tactic": "reconnaissance",
+      "score": 10,
+      "color": "#cc0000",
+      "comment": "Hits: 48 | Agents: ubuntu-webserver",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Wordlist Scanning"
+        },
+        {
+          "name": "hit_count",
+          "value": "48"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1595/003/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1595/003/"
+        }
+      ],
+      "showSubtechniques": true
+    },
+    {
+      "techniqueID": "T1190",
+      "tactic": "initial-access",
+      "score": 10,
+      "color": "#cc0000",
+      "comment": "Hits: 49 | Agents: ubuntu-webserver",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Exploit Public-Facing Application"
+        },
+        {
+          "name": "hit_count",
+          "value": "49"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1190/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1190/"
+        }
+      ],
+      "showSubtechniques": false
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ffffff",
+      "#ff6666",
+      "#cc0000"
+    ],
+    "minValue": 0,
+    "maxValue": 10
+  },
+  "legendItems": [
+    {
+      "label": "1-2 hits",
+      "color": "#ffcccc"
+    },
+    {
+      "label": "3-5 hits",
+      "color": "#ff6666"
+    },
+    {
+      "label": "6+ hits",
+      "color": "#cc0000"
+    }
+  ],
+  "metadata": [
+    {
+      "name": "generated",
+      "value": "2026-06-12T20:29:37.510872"
+    },
+    {
+      "name": "tool",
+      "value": "GhostNet anomaly_detector v2.1"
+    },
+    {
+      "name": "total_techniques",
+      "value": "2"
+    }
+  ],
+  "links": [],
+  "showTacticRowBackground": true,
+  "tacticRowBackground": "#1a1a2e",
+  "selectTechniquesAcrossTactics": false,
+  "selectSubtechniquesWithParent": false
+}
