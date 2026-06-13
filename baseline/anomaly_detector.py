@@ -49,6 +49,15 @@ MITRE_MAPPINGS = [
     {"groups":["c2","c&c","beacon"],"keywords":["c2","command and control","beacon","cobalt strike","metasploit","reverse shell","bind shell","rat ","remote access"],"suricata_category":["Malware Command and Control Activity"],"techniques":[("T1071.001","Web Protocols (C2)","Command and Control"),("T1105","Ingress Tool Transfer","Command and Control")]},
     {"groups":["dns_tunnel"],"keywords":["dns tunnel","dnscat","iodine"],"techniques":[("T1071.004","DNS (C2)","Command and Control")]},
     {"groups":["exfil","data_exfiltration"],"keywords":["exfil","data leak","upload","ftp outbound","large transfer"],"suricata_category":["Attempted Information Leak"],"techniques":[("T1041","Exfiltration Over C2 Channel","Exfiltration")]},
+    {"groups":["windows","sysmon"],"keywords":["taskhost","svchost","sdbinst","appcompat","application compatibility","scheduled task","task scheduler"],"techniques":[("T1053.005","Scheduled Task","Execution")]},
+    {"groups":["windows","sysmon"],"keywords":["sysmon","process create","processcreate","image load"],"techniques":[("T1059","Command and Scripting Interpreter","Execution")]},
+    {"groups":["syscheck","syscheck_file"],"keywords":["file added","file modified","integrity","checksum"],"techniques":[("T1565.001","Stored Data Manipulation","Impact")]},
+    {"groups":["rootcheck"],"keywords":["rootcheck","anomaly","hidden","trojan","suspicious"],"techniques":[("T1014","Rootkit","Defense Evasion")]},
+    {"groups":["sca"],"keywords":["compliance","benchmark","cis","policy","password history","audit","configuration"],"techniques":[("T1078","Valid Accounts","Defense Evasion")]},
+    {"groups":["policy_changed","config_changed"],"keywords":["policy","configuration changed","registry","audit policy"],"techniques":[("T1112","Modify Registry","Defense Evasion")]},
+    {"groups":["authentication_failed"],"keywords":["authentication failure","failed login","invalid","logon failure"],"techniques":[("T1110","Brute Force","Credential Access")]},
+    {"groups":["dpkg"],"keywords":["installed","package","dpkg","apt"],"techniques":[("T1072","Software Deployment Tools","Execution")]},
+    {"groups":["ids","suricata"],"keywords":["printnightmare","print","spooler","dll"],"techniques":[("T1547.012","Print Processors","Persistence")]},
     {"groups":["dos","ddos"],"keywords":["denial of service","flood","ddos","syn flood","udp flood"],"suricata_category":["Attempted Denial of Service"],"techniques":[("T1498","Network Denial of Service","Impact")]},
     {"groups":["ransomware"],"keywords":["ransomware","encrypt",".locked",".enc ","ransom"],"techniques":[("T1486","Data Encrypted for Impact","Impact")]},
 ]
@@ -144,21 +153,34 @@ class WazuhClient:
         return self.token
 
     def get_alerts(self, min_level=7, limit=50):
-        query = {
-            "size": limit,
-            "sort": [{"timestamp": {"order": "desc"}}],
-            "query": {"range": {"rule.level": {"gte": min_level}}}
-        }
-        r = requests.post(
-            f"{INDEXER_BASE}/wazuh-alerts-*/_search",
-            auth=(INDEXER_USER, INDEXER_PASS),
-            json=query,
-            verify=VERIFY_SSL,
-            timeout=15
-        )
-        r.raise_for_status()
-        hits = r.json().get("hits", {}).get("hits", [])
-        return [h["_source"] for h in hits]
+        # Stratified sample: top alerts per rule group for technique diversity
+        groups = ["windows","web_scan","recon","rootcheck","syscheck",
+                  "sca","authentication_failed","policy_changed","syslog","ids"]
+        all_hits = []
+        seen = set()
+        for group in groups:
+            query = {
+                "size": 8,
+                "sort": [{"timestamp": {"order": "desc"}}],
+                "query": {"bool": {"must": [
+                    {"range": {"rule.level": {"gte": min_level}}},
+                    {"term": {"rule.groups": group}}
+                ]}}
+            }
+            try:
+                r = requests.post(
+                    f"{INDEXER_BASE}/wazuh-alerts-*/_search",
+                    auth=(INDEXER_USER, INDEXER_PASS),
+                    json=query, verify=VERIFY_SSL, timeout=15)
+                r.raise_for_status()
+                for h in r.json().get("hits", {}).get("hits", []):
+                    uid = h["_id"]
+                    if uid not in seen:
+                        seen.add(uid)
+                        all_hits.append(h["_source"])
+            except Exception as e:
+                log.warning(f"Group query failed for {group}: {e}")
+        return all_hits[:limit * 2]
 
 def parse_alert(raw):
     rule  = raw.get("rule", {})
