@@ -10,7 +10,7 @@
 - [x] EVE JSON → Wazuh Docker volume mount wired
 - [x] Wazuh logcollector tailing /var/log/suricata/eve.json
 - [x] Custom Wazuh rules 100200–100215 with MITRE tags
-- [x] anomaly_detector.py v2.1 — 4-tier MITRE ATT&CK auto-mapper
+- [x] anomaly_detector.py v2.2 — 4-tier MITRE ATT&CK auto-mapper
   - High: Wazuh rule tag pass-through
   - High: Suricata EVE category match
   - Medium: Wazuh rule group match
@@ -22,16 +22,16 @@
 - [x] Recon (nmap -sV) → ET SCAN Nmap User-Agent detected ✅
 - [x] Web attack (nikto) → ET WEB_SERVER ColdFusion, CVE-2024-44000 detected ✅
 - [x] Exfil sim (curl 5MB POST) → STREAM anomaly detected ✅
-- [x] Brute force (hydra SSH) → SSH not exposed on ubuntu-web (gap documented)
-- [x] Detection rate: 3/4 modules (75%) — pipeline validated end-to-end
+- [x] Brute force (hydra SSH) → SSH enabled on ubuntu-web, hydra triggers ET SSH invalid banner alerts ✅
+- [x] Detection rate: 4/4 modules (100%) — pipeline validated end-to-end
 
-## Phase 4 — Dashboard + Reporting 🔄 NEXT
-- [x] ATT- [ ] ATT&CK Navigator heatmapCK Navigator heatmap generation from anomaly_detector mitre_summary
-- [x] n8n workflow: Wazuh alert → Claude triage → Slack/email notification
+## Phase 4 — Dashboard + Reporting ✅ COMPLETE
+- [x] ATT&CK Navigator heatmap — 10 techniques across 6 tactics, upload-ready JSON layer
+- [x] n8n workflow: Wazuh alert → Claude triage → output notification
 - [x] Executive PDF report generator from cycle JSON output
-- [x] NullByte SSH brute force fix (SSH enabled on ubuntu-web, hydra triggers ET SSH invalid banner alerts) (enable SSH on ubuntu-web or switch target)
+- [x] NullByte SSH brute force fix (SSH enabled on ubuntu-web, hydra triggers ET SSH invalid banner alerts)
 
-## Phase 5 — Threat Intel Integration 📋 PLANNED
+## Phase 5 — Threat Intel Integration ✅ COMPLETE
 - [x] OTX threat intel feed — 36 pulses, 496 Suricata rules auto-generated
 - [x] IOC feed deployed to Suricata (SID 9900000-9900495, 51251 total signatures)
-- [ ] Automated false positive suppression tuning
+- [x] Automated false positive suppression tuning via stratified alert sampling
