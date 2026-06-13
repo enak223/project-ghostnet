@@ -1,6 +1,12 @@
 *.db
-*.json
 cron.log
 anomalies/
 __pycache__/
 .env
+
+# Ignore runtime cycle reports (generated, not source)
+ghostnet_anomaly_cycle_*.json
+nullbyte_coverage_*.json
+
+# Allow navigator layers and key outputs
+!ghostnet_navigator_*.json
