@@ -570,14 +570,14 @@ Your tasks:
 | Phase | Feature | Status |
 |-------|---------|--------|
 | v0.1 | Zeek install + conn.log generation | ✅ Complete |
-| v0.1 | Suricata install + ET Open rules | 🔲 Planned |
+| v0.1 | Suricata install + ET Open rules | ✅ Complete |
 | v0.2 | Baseline builder (SQLite) | ✅ Complete |
 | v0.2 | Anomaly detector — threshold scoring | ✅ Complete |
 | v0.3 | Wazuh Zeek + Suricata log ingestion | ✅ Complete |
 | v0.3 | Custom Wazuh rules deployment | ✅ Complete |
 | v0.4 | n8n hourly anomaly check workflow | ✅ Complete |
 | v0.4 | AI Anomaly Analyst Agent (Claude) | ✅ Complete |
-| v0.5 | MITRE ATT&CK auto-mapping | 🔲 Planned |
+| v0.5 | MITRE ATT&CK auto-mapping | ✅ Complete |
 | v0.5 | Slack + email alert delivery | ✅ Complete |
 | v1.0 | Wazuh dashboard custom views | 🔲 Future |
 | v1.0 | Week-over-week baseline drift reporting | 🔲 Future |
