@@ -1,0 +1,359 @@
+{
+  "name": "GhostNet Detection Coverage",
+  "versions": {
+    "attack": "14",
+    "navigator": "4.9",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Auto-generated from GhostNet anomaly_detector MITRE mappings",
+  "filters": {
+    "platforms": [
+      "Windows",
+      "Linux",
+      "Network"
+    ]
+  },
+  "sorting": 3,
+  "layout": {
+    "layout": "side",
+    "aggregateFunction": "max",
+    "showID": true,
+    "showName": true
+  },
+  "hideDisabled": false,
+  "techniques": [
+    {
+      "techniqueID": "T1053.005",
+      "tactic": "execution",
+      "score": 10,
+      "color": "#cc0000",
+      "comment": "Hits: 16 | Agents: win11-workstation",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Scheduled Task"
+        },
+        {
+          "name": "hit_count",
+          "value": "16"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1053/005/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1053/005/"
+        }
+      ],
+      "showSubtechniques": true
+    },
+    {
+      "techniqueID": "T1059",
+      "tactic": "execution",
+      "score": 10,
+      "color": "#cc0000",
+      "comment": "Hits: 16 | Agents: win11-workstation",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Command and Scripting Interpreter"
+        },
+        {
+          "name": "hit_count",
+          "value": "16"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1059/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1059/"
+        }
+      ],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1014",
+      "tactic": "defense-evasion",
+      "score": 10,
+      "color": "#cc0000",
+      "comment": "Hits: 11 | Agents: ubuntu-webserver, win11-workstation",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Rootkit"
+        },
+        {
+          "name": "hit_count",
+          "value": "11"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1014/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1014/"
+        }
+      ],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1595.003",
+      "tactic": "reconnaissance",
+      "score": 8,
+      "color": "#cc0000",
+      "comment": "Hits: 8 | Agents: ubuntu-webserver",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Wordlist Scanning"
+        },
+        {
+          "name": "hit_count",
+          "value": "8"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1595/003/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1595/003/"
+        }
+      ],
+      "showSubtechniques": true
+    },
+    {
+      "techniqueID": "T1190",
+      "tactic": "initial-access",
+      "score": 9,
+      "color": "#cc0000",
+      "comment": "Hits: 9 | Agents: ubuntu-webserver, win11-workstation",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Exploit Public-Facing Application"
+        },
+        {
+          "name": "hit_count",
+          "value": "9"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1190/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1190/"
+        }
+      ],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1565.001",
+      "tactic": "impact",
+      "score": 8,
+      "color": "#cc0000",
+      "comment": "Hits: 8 | Agents: ubuntu-webserver",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Stored Data Manipulation"
+        },
+        {
+          "name": "hit_count",
+          "value": "8"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1565/001/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1565/001/"
+        }
+      ],
+      "showSubtechniques": true
+    },
+    {
+      "techniqueID": "T1078",
+      "tactic": "defense-evasion",
+      "score": 10,
+      "color": "#cc0000",
+      "comment": "Hits: 16 | Agents: win11-workstation",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Valid Accounts"
+        },
+        {
+          "name": "hit_count",
+          "value": "16"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1078/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1078/"
+        }
+      ],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1110",
+      "tactic": "credential-access",
+      "score": 8,
+      "color": "#cc0000",
+      "comment": "Hits: 8 | Agents: ubuntu-webserver",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Brute Force"
+        },
+        {
+          "name": "hit_count",
+          "value": "8"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1110/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1110/"
+        }
+      ],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1112",
+      "tactic": "defense-evasion",
+      "score": 8,
+      "color": "#cc0000",
+      "comment": "Hits: 8 | Agents: win11-workstation",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Modify Registry"
+        },
+        {
+          "name": "hit_count",
+          "value": "8"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1112/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1112/"
+        }
+      ],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1053",
+      "tactic": "execution",
+      "score": 1,
+      "color": "#ffcccc",
+      "comment": "Hits: 1 | Agents: ubuntu-webserver",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "technique",
+          "value": "Scheduled Task/Job"
+        },
+        {
+          "name": "hit_count",
+          "value": "1"
+        },
+        {
+          "name": "url",
+          "value": "https://attack.mitre.org/techniques/T1053/"
+        }
+      ],
+      "links": [
+        {
+          "label": "ATT&CK",
+          "url": "https://attack.mitre.org/techniques/T1053/"
+        }
+      ],
+      "showSubtechniques": false
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ffffff",
+      "#ff6666",
+      "#cc0000"
+    ],
+    "minValue": 0,
+    "maxValue": 10
+  },
+  "legendItems": [
+    {
+      "label": "1-2 hits",
+      "color": "#ffcccc"
+    },
+    {
+      "label": "3-5 hits",
+      "color": "#ff6666"
+    },
+    {
+      "label": "6+ hits",
+      "color": "#cc0000"
+    }
+  ],
+  "metadata": [
+    {
+      "name": "generated",
+      "value": "2026-06-14T18:01:55.393264"
+    },
+    {
+      "name": "tool",
+      "value": "GhostNet anomaly_detector v2.1"
+    },
+    {
+      "name": "total_techniques",
+      "value": "10"
+    }
+  ],
+  "links": [],
+  "showTacticRowBackground": true,
+  "tacticRowBackground": "#1a1a2e",
+  "selectTechniquesAcrossTactics": false,
+  "selectSubtechniquesWithParent": false
+}

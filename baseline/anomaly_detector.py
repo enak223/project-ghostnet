@@ -58,6 +58,7 @@ MITRE_MAPPINGS = [
     {"groups":["authentication_failed"],"keywords":["authentication failure","failed login","invalid","logon failure"],"techniques":[("T1110","Brute Force","Credential Access")]},
     {"groups":["dpkg"],"keywords":["installed","package","dpkg","apt"],"techniques":[("T1072","Software Deployment Tools","Execution")]},
     {"groups":["ids","suricata"],"keywords":["printnightmare","print","spooler","dll"],"techniques":[("T1547.012","Print Processors","Persistence")]},
+    {"groups":["adduser","useradd","syslog"],"keywords":["new user added","user added","useradd","adduser","new group added"],"techniques":[("T1136.001","Local Account","Persistence")]},
     {"groups":["dos","ddos"],"keywords":["denial of service","flood","ddos","syn flood","udp flood"],"suricata_category":["Attempted Denial of Service"],"techniques":[("T1498","Network Denial of Service","Impact")]},
     {"groups":["ransomware"],"keywords":["ransomware","encrypt",".locked",".enc ","ransom"],"techniques":[("T1486","Data Encrypted for Impact","Impact")]},
 ]
